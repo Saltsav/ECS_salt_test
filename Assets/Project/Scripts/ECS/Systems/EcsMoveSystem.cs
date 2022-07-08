@@ -6,8 +6,8 @@ namespace ButtonsAndDoors
 {
     internal sealed class EcsMoveSystem : IEcsRunSystem
     {
-        private EcsFilterInject<Inc<EcsPosition, EcsMoveSpeedComponent>> _moveFilter = default;
-        private EcsFilterInject<Inc<EcsTimeComponent>> _timeFilter = default;
+        private EcsFilterInject<Inc<EcsPosition, EcsMoveSpeed>> _moveFilter = default;
+        private EcsFilterInject<Inc<EcsTime>> _timeFilter = default;
         private readonly EcsFilterInject<Inc<EcsNeedUpdateViewOnMapTag>> _needUpdateViewOnMapFilter = default;
 
         private float deltaTime;
@@ -16,8 +16,8 @@ namespace ButtonsAndDoors
         {
             foreach (int timeEntity in _timeFilter.Value)
             {
-                ref EcsTimeComponent timeComponent = ref _timeFilter.Pools.Inc1.Get(timeEntity);
-                deltaTime = timeComponent.deltaTime;
+                ref EcsTime time = ref _timeFilter.Pools.Inc1.Get(timeEntity);
+                deltaTime = time.deltaTime;
             }
 
             foreach (int entity in _moveFilter.Value)
@@ -32,8 +32,8 @@ namespace ButtonsAndDoors
                         _needUpdateViewOnMapFilter.Pools.Inc1.Add(entity);
                     }
 
-                    ref EcsMoveSpeedComponent moveSpeedComponent = ref _moveFilter.Pools.Inc2.Get(entity);
-                    float t = 1 / (dis / moveSpeedComponent.moveSpeed);
+                    ref EcsMoveSpeed moveSpeed = ref _moveFilter.Pools.Inc2.Get(entity);
+                    float t = 1 / (dis / moveSpeed.moveSpeed);
                     position.currentPosition = Vector3.Lerp(position.currentPosition, position.needPosition, t * deltaTime);
                 }
             

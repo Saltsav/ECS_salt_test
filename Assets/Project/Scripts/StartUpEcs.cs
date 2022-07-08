@@ -19,11 +19,13 @@ namespace ButtonsAndDoors
 #endif
                 //ClearECS
                 .Add(new EcsSpawnLevelSystem())
-                .Add(new EcsSpawnUnitSystem())
+                .Add(new EcsSpawnPlayerSystem())
                 .Add(new EcsInputClickSystem())
                 .Add(new EcsSetPositionToPlayerSystem())
                 .Add(new EcsActiveByDistanceSystem())
                 .Add(new EcsColorTriggerSystem())
+                .Add(new EcsEnableTriggersSystem())
+
                 .Add(new EcsMoveSystem())
             
                 //Unity Dependence

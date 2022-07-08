@@ -6,7 +6,7 @@ namespace ButtonsAndDoors
 {
     internal sealed class EcsTimeSystem : IEcsInitSystem, IEcsRunSystem
     {
-        private EcsFilterInject<Inc<EcsTimeComponent>> _timeFilter = default;
+        private EcsFilterInject<Inc<EcsTime>> _timeFilter = default;
 
         public void Init(EcsSystems systems)
         {
@@ -18,8 +18,8 @@ namespace ButtonsAndDoors
         {
             foreach (int entity in _timeFilter.Value)
             {
-                ref EcsTimeComponent timeComponent = ref _timeFilter.Pools.Inc1.Get(entity);
-                timeComponent.deltaTime = Time.deltaTime;
+                ref EcsTime time = ref _timeFilter.Pools.Inc1.Get(entity);
+                time.deltaTime = Time.deltaTime;
             }
         }
     }

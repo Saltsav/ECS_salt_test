@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace ButtonsAndDoors
 {
-    internal sealed class EcsSpawnUnitSystem : IEcsInitSystem
+    internal sealed class EcsSpawnPlayerSystem : IEcsInitSystem
     {
         private readonly EcsCustomInject<SceneData> _sceneData = default;
 
@@ -17,13 +17,13 @@ namespace ButtonsAndDoors
             ecsPosition.currentPosition = _sceneData.Value.levelOnUnity.pointSpawnPlayer.position;
             ecsPosition.needPosition = _sceneData.Value.levelOnUnity.pointSpawnPlayer.position;
 
-            ref EcsMoveSpeedComponent moveSpeed = ref systems.GetWorld().GetPool<EcsMoveSpeedComponent>().Add(entity);
+            ref EcsMoveSpeed moveSpeed = ref systems.GetWorld().GetPool<EcsMoveSpeed>().Add(entity);
             moveSpeed.moveSpeed = Constatns.PLAYER_SPEED;
 
-            ref EcsMonoBehComponent monoBeh = ref systems.GetWorld().GetPool<EcsMonoBehComponent>().Add(entity);
+            ref EcsMonoBeh monoBeh = ref systems.GetWorld().GetPool<EcsMonoBeh>().Add(entity);
             monoBeh.transform = _sceneData.Value.playerOnUnity.transform;
 
-            ref EscTriggerForActiveTag triggerForActiveTag = ref systems.GetWorld().GetPool<EscTriggerForActiveTag>().Add(entity);
+            ref DistanceTriggerSender triggerSender = ref systems.GetWorld().GetPool<DistanceTriggerSender>().Add(entity);
             
         }
     }

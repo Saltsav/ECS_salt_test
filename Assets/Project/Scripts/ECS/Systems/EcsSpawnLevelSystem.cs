@@ -21,7 +21,7 @@ namespace ButtonsAndDoors
             foreach (ButtonOnUnity buttonOnUnity in levelOnUnity.listButtonOnUnity)
             {
                 int buttonEntity = systems.GetWorld().NewEntity();
-                ref EscCanActiveByDistanceTag canActiveByDistanceTag = ref systems.GetWorld().GetPool<EscCanActiveByDistanceTag>().Add(buttonEntity);
+                systems.GetWorld().GetPool<DistanceTriggerReceiver>().Add(buttonEntity);
 
                 ref EcsPosition ecsPosition = ref systems.GetWorld().GetPool<EcsPosition>().Add(buttonEntity);
                 ecsPosition.currentPosition = buttonOnUnity.transform.position;
@@ -33,12 +33,24 @@ namespace ButtonsAndDoors
 
             foreach (DoorOnUnity doorOnUnity in levelOnUnity.listDoorOnUnity)
             {
-                int buttonEntity = systems.GetWorld().NewEntity();
-                ref EscCanActiveByDistanceTag canActiveByDistanceTag = ref systems.GetWorld().GetPool<EscCanActiveByDistanceTag>().Add(buttonEntity);
+                int doorEntity = systems.GetWorld().NewEntity();
 
-                ref EcsPosition ecsPosition = ref systems.GetWorld().GetPool<EcsPosition>().Add(buttonEntity);
-                ecsPosition.currentPosition = buttonOnUnity.transform.position;
-                ecsPosition.needPosition = buttonOnUnity.transform.position;
+                ref EscColorTriggerReceiver colorTriggerReceiver = ref systems.GetWorld().GetPool<EscColorTriggerReceiver>().Add(doorEntity);
+                colorTriggerReceiver.colorID = doorOnUnity.colorID;
+
+                ref EcsPosition position = ref systems.GetWorld().GetPool<EcsPosition>().Add(doorEntity);
+                position.currentPosition = doorOnUnity.transform.position;
+                position.needPosition = doorOnUnity.transform.position;
+
+                ref EcsMoveSpeed moveSpeed = ref systems.GetWorld().GetPool<EcsMoveSpeed>().Add(doorEntity);
+                moveSpeed.moveSpeed = Constatns.OPEN_DOOR_SPEED;
+
+                ref EcsMonoBeh monoBeh = ref systems.GetWorld().GetPool<EcsMonoBeh>().Add(doorEntity);
+                monoBeh.transform = doorOnUnity.transform;
+
+                ref EcsMoveIfActiveTag moveIfActive = ref systems.GetWorld().GetPool<EcsMoveIfActiveTag>().Add(doorEntity);
+                moveIfActive.startPos = doorOnUnity.transform.position;
+                moveIfActive.finalPos = doorOnUnity.transform.position + Vector3.down * Constatns.OPEN_DOOR_DELTA;
             }
         }
     }

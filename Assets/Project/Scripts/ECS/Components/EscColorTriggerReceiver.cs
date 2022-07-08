@@ -1,6 +1,6 @@
 ﻿namespace ButtonsAndDoors
 {
-    public struct ColorTriggerReceive
+    public struct EscColorTriggerReceiver
     {
         public Constatns.TypeID colorID;
     }

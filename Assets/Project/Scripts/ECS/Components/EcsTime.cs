@@ -1,6 +1,6 @@
 ﻿namespace ButtonsAndDoors
 {
-    public struct EcsTimeComponent
+    public struct EcsTime
     {
         public float deltaTime;
     }

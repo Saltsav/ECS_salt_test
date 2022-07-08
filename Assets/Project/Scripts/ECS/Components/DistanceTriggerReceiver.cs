@@ -1,6 +1,6 @@
 ﻿namespace ButtonsAndDoors
 {
-    public struct EscCanActiveByDistanceTag
+    public struct DistanceTriggerReceiver
     {
 
     }

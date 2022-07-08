@@ -12,7 +12,7 @@ namespace ButtonsAndDoors
         public void Init(EcsSystems systems)
         {
             int entity = systems.GetWorld().NewEntity();
-            systems.GetWorld().GetPool<EcsInputClickComponent>().Add(entity);
+            systems.GetWorld().GetPool<EcsInputClick>().Add(entity);
         }
 
         public void Run(EcsSystems systems)
@@ -23,11 +23,11 @@ namespace ButtonsAndDoors
 
                 if (Physics.Raycast(_ray, out _hit))
                 {
-                    foreach (int entity in systems.GetWorld().Filter<EcsInputClickComponent>().End())
+                    foreach (int entity in systems.GetWorld().Filter<EcsInputClick>().End())
                     {
-                        ref EcsInputClickComponent inputClickComponent = ref systems.GetWorld().GetPool<EcsInputClickComponent>().Get(entity);
-                        inputClickComponent.vector3 = _hit.point;
-                        inputClickComponent.haveClick = true;
+                        ref EcsInputClick inputClick = ref systems.GetWorld().GetPool<EcsInputClick>().Get(entity);
+                        inputClick.vector3 = _hit.point;
+                        inputClick.haveClick = true;
                     }
                 }
             }

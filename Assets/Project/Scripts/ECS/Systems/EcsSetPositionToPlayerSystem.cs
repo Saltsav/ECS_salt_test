@@ -6,14 +6,14 @@ namespace ButtonsAndDoors
     internal sealed class EcsSetPositionToPlayerSystem : IEcsRunSystem
     {
         private EcsFilterInject<Inc<EcsPosition, EcsPlayerTag>> _playerFilter = default;
-        private EcsFilterInject<Inc<EcsInputClickComponent>> _inputClickFilter = default;
+        private EcsFilterInject<Inc<EcsInputClick>> _inputClickFilter = default;
 
         public void Run(EcsSystems systems)
         {
             foreach (int inputClickEntity in _inputClickFilter.Value)
             {
-                ref EcsInputClickComponent inputClickComponent = ref _inputClickFilter.Pools.Inc1.Get(inputClickEntity);
-                if (!inputClickComponent.haveClick)
+                ref EcsInputClick inputClick = ref _inputClickFilter.Pools.Inc1.Get(inputClickEntity);
+                if (!inputClick.haveClick)
                 {
                     return;
                 }
@@ -22,7 +22,7 @@ namespace ButtonsAndDoors
                 {
                     ref EcsPosition position = ref _playerFilter.Pools.Inc1.Get(playerEntity);
 
-                    position.needPosition = inputClickComponent.vector3;
+                    position.needPosition = inputClick.vector3;
                 }
             }
         }

@@ -1151,6 +1151,10 @@ PrefabInstance:
       propertyPath: typeID
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3635615229003361436, guid: 883be280ae4a3f44caae3857d8a2139e, type: 3}
+      propertyPath: colorID
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5612722628923428875, guid: 883be280ae4a3f44caae3857d8a2139e, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -1222,6 +1226,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5785441529376210485, guid: 7d0fda18205288e4d8e9a089c88113bc, type: 3}
       propertyPath: typeID
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5785441529376210485, guid: 7d0fda18205288e4d8e9a089c88113bc, type: 3}
+      propertyPath: colorID
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8225451870487450380, guid: 7d0fda18205288e4d8e9a089c88113bc, type: 3}

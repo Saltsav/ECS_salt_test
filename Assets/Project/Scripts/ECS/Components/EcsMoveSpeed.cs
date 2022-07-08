@@ -1,6 +1,6 @@
 ﻿namespace ButtonsAndDoors
 {
-    public struct EcsMoveSpeedComponent
+    public struct EcsMoveSpeed
     {
         public float moveSpeed;
     }

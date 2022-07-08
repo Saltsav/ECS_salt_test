@@ -2,7 +2,7 @@
 
 namespace ButtonsAndDoors
 {
-    public struct EcsMonoBehComponent
+    public struct EcsMonoBeh
     {
         public Transform transform;
     }
