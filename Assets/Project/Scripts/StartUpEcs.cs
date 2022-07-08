@@ -1,4 +1,5 @@
 using Leopotam.EcsLite;
+using Leopotam.EcsLite.Di;
 using Leopotam.EcsLite.UnityEditor;
 using UnityEngine;
 
@@ -7,6 +8,7 @@ namespace ButtonsAndDoors
     internal sealed class StartUpEcs : MonoBehaviour
     {
         private EcsSystems _systems;
+        [SerializeField] private SceneData _sceneData;
 
         private void Start()
         {
@@ -15,7 +17,11 @@ namespace ButtonsAndDoors
 #if UNITY_EDITOR
                 .Add(new EcsWorldDebugSystem())
 #endif
+                .Add(new EcsSpawnLevelSystem())
+                .Add(new EcsSpawnUnitSystem())
                 .Add(new EcsInputClickSystem())
+                .Add(new EcsSetPositionToPlayerSystem())
+                .Inject(_sceneData)
                 .Init();
         }
 
