@@ -5,9 +5,9 @@ namespace ButtonsAndDoors
 {
     internal sealed class EcsColorTriggerSystem : IEcsRunSystem
     {
-        private EcsFilterInject<Inc<ActiveTag, ColorTriggerSend>> _sendFilter = default;
+        private EcsFilterInject<Inc<EcsActiveTag, EcsColorTriggerSend>> _sendFilter = default;
         private EcsFilterInject<Inc<EscColorTriggerReceiver>> _receiveFilter = default;
-        private readonly EcsFilterInject<Inc<ActiveTag>> _activeTagFilter = default;
+        private readonly EcsFilterInject<Inc<EcsActiveTag>> _activeTagFilter = default;
         private bool flag;
 
         public void Run(EcsSystems systems)
@@ -19,9 +19,9 @@ namespace ButtonsAndDoors
 
                 foreach (int triggerSendEntity in _sendFilter.Value)
                 {
-                    ref ColorTriggerSend colorTriggerSend = ref _sendFilter.Pools.Inc2.Get(triggerSendEntity);
+                    ref EcsColorTriggerSend ecsColorTriggerSend = ref _sendFilter.Pools.Inc2.Get(triggerSendEntity);
 
-                    if (escColorTriggerReceiver.colorID == colorTriggerSend.colorID)
+                    if (escColorTriggerReceiver.colorID == ecsColorTriggerSend.colorID)
                     {
                         flag = false;
                         if (!_activeTagFilter.Pools.Inc1.Has(triggerReceiveEntity))

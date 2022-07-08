@@ -1,16 +1,25 @@
+using System;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
 using Leopotam.EcsLite.UnityEditor;
 using UnityEngine;
+using Zenject;
 
 namespace ButtonsAndDoors
 {
-    internal sealed class StartUpEcs : MonoBehaviour
+    internal sealed class StartUpEcs : IInitializable, ITickable, IFixedTickable, IDisposable
     {
         private EcsSystems _systems;
-        [SerializeField] private SceneData _sceneData;
+        private SceneData _sceneData;
 
-        private void Start()
+
+        [Inject]
+        private void Construct(SceneData sceneData)
+        {
+            _sceneData = sceneData;
+        }
+
+        public void Initialize()
         {
             _systems = new EcsSystems(new EcsWorld());
             _systems
@@ -35,12 +44,16 @@ namespace ButtonsAndDoors
                 .Init();
         }
 
-        private void Update()
+        public void Tick()
         {
             _systems?.Run();
         }
 
-        private void OnDestroy()
+        public void FixedTick()
+        {
+        }
+
+        public void Dispose()
         {
             if (_systems != null)
             {

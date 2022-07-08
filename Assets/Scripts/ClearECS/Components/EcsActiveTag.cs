@@ -1,6 +1,6 @@
 ﻿namespace ButtonsAndDoors
 {
-    public struct ActiveTag
+    public struct EcsActiveTag
     {
     }
 }

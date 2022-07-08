@@ -6,9 +6,9 @@ namespace ButtonsAndDoors
 {
     internal sealed class EcsActiveByDistanceSystem : IEcsRunSystem
     {
-        private EcsFilterInject<Inc<DistanceTriggerReceiver, EcsPosition>> _canActiveFilter = default;
-        private EcsFilterInject<Inc<DistanceTriggerSender, EcsPosition>> _triggersFilter = default;
-        private readonly EcsFilterInject<Inc<ActiveTag>> _activeTagFilter = default;
+        private EcsFilterInject<Inc<EcsDistanceTriggerReceiver, EcsPosition>> _canActiveFilter = default;
+        private EcsFilterInject<Inc<EcsDistanceTriggerSender, EcsPosition>> _triggersFilter = default;
+        private readonly EcsFilterInject<Inc<EcsActiveTag>> _activeTagFilter = default;
 
         public void Run(EcsSystems systems)
         {

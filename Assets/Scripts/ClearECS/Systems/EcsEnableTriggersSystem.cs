@@ -5,8 +5,8 @@ namespace ButtonsAndDoors
 {
     internal sealed class EcsEnableTriggersSystem : IEcsRunSystem
     {
-        private EcsFilterInject<Inc<ActiveTag, EcsMoveIfActiveTag, EcsPosition>> _needMoveFilter = default;
-        private EcsFilterInject<Inc<EcsMoveIfActiveTag, EcsPosition>, Exc<ActiveTag>> _needStopFilter = default;
+        private EcsFilterInject<Inc<EcsActiveTag, EcsMoveIfActiveTag, EcsPosition>> _needMoveFilter = default;
+        private EcsFilterInject<Inc<EcsMoveIfActiveTag, EcsPosition>, Exc<EcsActiveTag>> _needStopFilter = default;
 
         public void Run(EcsSystems systems)
         {

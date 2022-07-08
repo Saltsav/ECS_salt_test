@@ -1,6 +1,6 @@
 ﻿namespace ButtonsAndDoors
 {
-    public struct DistanceTriggerReceiver
+    public struct EcsDistanceTriggerReceiver
     {
 
     }
