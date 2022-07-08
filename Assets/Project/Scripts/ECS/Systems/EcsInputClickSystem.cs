@@ -27,6 +27,7 @@ namespace ButtonsAndDoors
                     {
                         ref EcsInputClickComponent inputClickComponent = ref systems.GetWorld().GetPool<EcsInputClickComponent>().Get(entity);
                         inputClickComponent.vector3 = _hit.point;
+                        inputClickComponent.haveClick = true;
                     }
                 }
             }

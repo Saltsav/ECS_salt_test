@@ -2,7 +2,7 @@
 
 namespace ButtonsAndDoors
 {
-    public struct EcsPositionComponent
+    public struct EcsPosition
     {
         public Vector3 currentPosition;
         public Vector3 needPosition;

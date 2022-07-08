@@ -17,10 +17,18 @@ namespace ButtonsAndDoors
 #if UNITY_EDITOR
                 .Add(new EcsWorldDebugSystem())
 #endif
+                //ClearECS
                 .Add(new EcsSpawnLevelSystem())
                 .Add(new EcsSpawnUnitSystem())
                 .Add(new EcsInputClickSystem())
                 .Add(new EcsSetPositionToPlayerSystem())
+                .Add(new EcsActiveByDistanceSystem())
+                .Add(new EcsColorTriggerSystem())
+                .Add(new EcsMoveSystem())
+            
+                //Unity Dependence
+                .Add(new EcsTimeSystem())
+                .Add(new EcsUpdateViewOnMapSystem())
                 .Inject(_sceneData)
                 .Init();
         }

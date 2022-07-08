@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets.Project.Scripts.Systems
+namespace ButtonsAndDoors
 {
     public struct EcsMonoBehComponent
     {
