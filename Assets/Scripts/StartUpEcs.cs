@@ -33,7 +33,6 @@ namespace ButtonsAndDoors
                 //ClearECS
                 .Add(new EcsSpawnLevelSystem())
                 .Add(new EcsSpawnPlayerSystem())
-            
                 .Add(new EcsSetPositionToPlayerSystem())
                 .Add(new EcsActiveByDistanceSystem())
                 .Add(new EcsColorTriggerSystem())
