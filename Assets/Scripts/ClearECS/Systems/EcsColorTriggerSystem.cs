@@ -5,9 +5,9 @@ namespace ButtonsAndDoors
 {
     internal sealed class EcsColorTriggerSystem : IEcsRunSystem
     {
-        private EcsFilterInject<Inc<EcsActiveTag, EcsColorTriggerSend>> _sendFilter = default;
-        private EcsFilterInject<Inc<EscColorTriggerReceiver>> _receiveFilter = default;
-        private readonly EcsFilterInject<Inc<EcsActiveTag>> _activeTagFilter = default;
+        private EcsFilterInject<Inc<EcsActiveTag, EcsColorTriggerSend>> _sendFilter;
+        private EcsFilterInject<Inc<EscColorTriggerReceiver>> _receiveFilter;
+        private EcsFilterInject<Inc<EcsActiveTag>> _activeTagFilter;
         private bool flag;
 
         public void Run(EcsSystems systems)

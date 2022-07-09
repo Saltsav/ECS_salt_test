@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using UnityEngine;
-
 
 namespace ButtonsAndDoors
 {
@@ -10,7 +8,7 @@ namespace ButtonsAndDoors
     {
         public string levelID;
         public Constatns.ObjectType objectType;
-        public Vector3 pointSpawnPlayer;
+        public V3 pointSpawnPlayer;
         public List<ButtonInfo> listButtonInfo;
         public List<DoorInfo> listDoorInfo;
     }
@@ -21,7 +19,7 @@ namespace ButtonsAndDoors
         public Constatns.ObjectType objectType;
         public TransformInfo transformInfo;
         public Constatns.TypeID colorID;
-        public Color color;
+        public Clr clr;
     }
 
     [Serializable]
@@ -30,13 +28,13 @@ namespace ButtonsAndDoors
         public Constatns.ObjectType objectType;
         public TransformInfo transformInfo;
         public Constatns.TypeID colorID;
-        public Color color;
+        public Clr clr;
     }
 
     [Serializable]
     public class TransformInfo
     {
-        public Vector3 position;
-        public Vector3 rotate;
+        public V3 position;
+        public V3 rotate;
     }
 }

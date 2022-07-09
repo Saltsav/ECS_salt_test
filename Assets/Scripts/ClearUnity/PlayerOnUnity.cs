@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace ButtonsAndDoors.ClearUnity
+namespace ButtonsAndDoors
 {
     public class PlayerOnUnity : MonoBehaviour
     {

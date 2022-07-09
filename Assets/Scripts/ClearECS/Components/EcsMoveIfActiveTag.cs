@@ -1,10 +1,8 @@
-﻿using UnityEngine;
-
-namespace ButtonsAndDoors
+﻿namespace ButtonsAndDoors
 {
     public struct EcsMoveIfActiveTag
     {
-        public Vector3 startPos;
-        public Vector3 finalPos;
+        public V3 startPos;
+        public V3 finalPos;
     }
 }

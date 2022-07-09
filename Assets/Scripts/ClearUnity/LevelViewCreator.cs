@@ -1,5 +1,4 @@
 using System;
-using ButtonsAndDoors.ClearUnity;
 using Leopotam.EcsLite;
 using UnityEngine;
 
@@ -22,14 +21,14 @@ namespace ButtonsAndDoors
                 case Constatns.ObjectType.door:
                     DoorInfo doorInfo = data as DoorInfo;
                     DoorOnUnity doorOnUnity = go.GetComponent<DoorOnUnity>();
-                    doorOnUnity.transform.eulerAngles = doorInfo.transformInfo.rotate;
-                    doorOnUnity.SetColor(doorInfo.color);
+                    doorOnUnity.transform.eulerAngles = Utils.ConvertV3ToVector3(doorInfo.transformInfo.rotate);
+                    doorOnUnity.SetColor(Utils.ConvertClrToColor(doorInfo.clr));
                     break;
                 case Constatns.ObjectType.button:
                     ButtonInfo buttonInfo = data as ButtonInfo;
                     ButtonOnUnity buttonOnUnity = go.GetComponent<ButtonOnUnity>();
-                    buttonOnUnity.transform.eulerAngles = buttonInfo.transformInfo.rotate;
-                    buttonOnUnity.SetColor(buttonInfo.color);
+                    buttonOnUnity.transform.eulerAngles = Utils.ConvertV3ToVector3(buttonInfo.transformInfo.rotate);
+                    buttonOnUnity.SetColor(Utils.ConvertClrToColor(buttonInfo.clr));
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(type), type, null);

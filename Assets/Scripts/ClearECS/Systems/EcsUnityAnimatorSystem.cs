@@ -12,8 +12,8 @@ namespace ButtonsAndDoors
             foreach (int entity in _animatorFilter.Value)
             {
                 ref EcsUnityAnimator unityAnimator = ref _animatorFilter.Pools.Inc1.Get(entity);
-                unityAnimator.playerAnimation.SetState(systems.GetWorld().GetPool<EcsUpdateAnimationTag>().Has(entity) ? 
-                    AnimationState.run : AnimationState.idle);
+                bool flag = systems.GetWorld().GetPool<EcsUpdateAnimationTag>().Has(entity);
+                unityAnimator.playerAnimation.SetState(flag ? AnimationState.run : AnimationState.idle);
 
                 systems.GetWorld().GetPool<EcsUpdateAnimationTag>().Del(entity);
             }

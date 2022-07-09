@@ -1,5 +1,4 @@
-﻿using ButtonsAndDoors.ClearUnity;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace ButtonsAndDoors
 {

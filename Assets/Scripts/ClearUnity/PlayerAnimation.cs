@@ -20,6 +20,7 @@ namespace ButtonsAndDoors
             {
                 return;
             }
+
             animator.SetTrigger(animationState.ToString());
             currentState = animationState;
         }

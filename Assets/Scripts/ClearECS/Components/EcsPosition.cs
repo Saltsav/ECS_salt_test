@@ -1,10 +1,8 @@
-﻿using UnityEngine;
-
-namespace ButtonsAndDoors
+﻿namespace ButtonsAndDoors
 {
     public struct EcsPosition
     {
-        public Vector3 currentPosition;
-        public Vector3 needPosition;
+        public V3 currentPosition;
+        public V3 needPosition;
     }
 }

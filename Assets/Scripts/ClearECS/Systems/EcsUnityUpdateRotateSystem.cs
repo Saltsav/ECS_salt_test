@@ -1,13 +1,12 @@
 ﻿using System;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
-using UnityEngine;
 
 namespace ButtonsAndDoors
 {
     internal sealed class EcsUnityUpdateRotateSystem : IEcsRunSystem
     {
-        private EcsFilterInject<Inc<EcsMonoBeh, EcsPosition, EcsPlayerTag>> _filter = default;
+        private EcsFilterInject<Inc<EcsMonoBeh, EcsPosition, EcsPlayerTag>> _filter;
 
         public void Run(EcsSystems systems)
         {
@@ -18,7 +17,7 @@ namespace ButtonsAndDoors
                     Math.Abs(position.needPosition.z - position.currentPosition.z) > Constatns.FLOAT_ZERO)
                 {
                     ref EcsMonoBeh monoBeh = ref _filter.Pools.Inc1.Get(entity);
-                    monoBeh.transform.LookAt(position.currentPosition);
+                    monoBeh.transform.LookAt(Utils.ConvertV3ToVector3(position.currentPosition));
                 }
             }
         }

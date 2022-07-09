@@ -1,16 +1,15 @@
 ﻿using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
-using UnityEngine;
 
 namespace ButtonsAndDoors
 {
     internal sealed class EcsMoveSystem : IEcsRunSystem
     {
-        private EcsFilterInject<Inc<EcsPosition, EcsMoveSpeed>> _moveFilter = default;
-        private EcsFilterInject<Inc<EcsTime>> _timeFilter = default;
-        private readonly EcsFilterInject<Inc<EcsMoveTag>> _needUpdateViewOnMapFilter = default;
-        private readonly EcsFilterInject<Inc<EcsUpdateAnimationTag>> _updateAnimationFilter = default;
-        
+        private EcsFilterInject<Inc<EcsPosition, EcsMoveSpeed>> _moveFilter;
+        private EcsFilterInject<Inc<EcsTime>> _timeFilter;
+        private EcsFilterInject<Inc<EcsMoveTag>> _needUpdateViewOnMapFilter;
+        private EcsFilterInject<Inc<EcsUpdateAnimationTag>> _updateAnimationFilter;
+
         private float deltaTime;
 
         public void Run(EcsSystems systems)
@@ -24,7 +23,7 @@ namespace ButtonsAndDoors
             foreach (int entity in _moveFilter.Value)
             {
                 ref EcsPosition position = ref _moveFilter.Pools.Inc1.Get(entity);
-                float dis = Vector3.Distance(position.needPosition, position.currentPosition);
+                float dis = EcsUtils.V3Dis(position.needPosition, position.currentPosition);
 
                 if (dis > Constatns.MIN_DIS_TO_STOP)
                 {
@@ -37,12 +36,11 @@ namespace ButtonsAndDoors
                     {
                         _updateAnimationFilter.Pools.Inc1.Add(entity);
                     }
-                    
+
                     ref EcsMoveSpeed moveSpeed = ref _moveFilter.Pools.Inc2.Get(entity);
                     float t = 1 / (dis / moveSpeed.moveSpeed);
-                    position.currentPosition = Vector3.Lerp(position.currentPosition, position.needPosition, t * deltaTime);
+                    position.currentPosition = EcsUtils.Lerp(position.currentPosition, position.needPosition, t * deltaTime);
                 }
-            
             }
         }
     }

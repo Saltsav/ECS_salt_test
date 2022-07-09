@@ -1,12 +1,11 @@
 ﻿using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
-using UnityEngine;
 
 namespace ButtonsAndDoors
 {
     internal sealed class EcsSpawnLevelSystem : IEcsInitSystem
     {
-        private readonly EcsCustomInject<SceneData> _sceneData = default;
+        private EcsCustomInject<SceneData> _sceneData;
 
         public void Init(EcsSystems systems)
         {
@@ -21,8 +20,8 @@ namespace ButtonsAndDoors
             needCreateViewTag.objectType = Constatns.ObjectType.level;
 
             ref EcsPosition ecsPositionLevel = ref systems.GetWorld().GetPool<EcsPosition>().Add(levelEntity);
-            ecsPositionLevel.currentPosition = Vector3.zero;
-            ecsPositionLevel.needPosition = Vector3.zero;
+            ecsPositionLevel.currentPosition = new V3(0, 0, 0);
+            ecsPositionLevel.needPosition = new V3(0, 0, 0);
 
             foreach (ButtonInfo buttonInfo in levelInfo.listButtonInfo)
             {
@@ -57,7 +56,7 @@ namespace ButtonsAndDoors
 
                 ref EcsMoveIfActiveTag moveIfActive = ref systems.GetWorld().GetPool<EcsMoveIfActiveTag>().Add(doorEntity);
                 moveIfActive.startPos = doorInfo.transformInfo.position;
-                moveIfActive.finalPos = doorInfo.transformInfo.position + Vector3.down * Constatns.OPEN_DOOR_DELTA;
+                moveIfActive.finalPos = new V3(doorInfo.transformInfo.position.x, doorInfo.transformInfo.position.y - Constatns.OPEN_DOOR_DELTA, doorInfo.transformInfo.position.z);
 
                 ref EcsNeedCreateViewTag needCreateViewDoorTag = ref systems.GetWorld().GetPool<EcsNeedCreateViewTag>().Add(doorEntity);
                 needCreateViewDoorTag.objectType = Constatns.ObjectType.door;

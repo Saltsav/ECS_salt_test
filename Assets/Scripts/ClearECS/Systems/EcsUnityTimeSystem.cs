@@ -6,14 +6,14 @@ namespace ButtonsAndDoors
 {
     internal sealed class EcsUnityTimeSystem : IEcsInitSystem, IEcsRunSystem
     {
-        private EcsFilterInject<Inc<EcsTime>> _timeFilter = default;
+        private EcsFilterInject<Inc<EcsTime>> _timeFilter;
 
         public void Init(EcsSystems systems)
         {
             int entity = systems.GetWorld().NewEntity();
             _timeFilter.Pools.Inc1.Add(entity);
         }
-        
+
         public void Run(EcsSystems systems)
         {
             foreach (int entity in _timeFilter.Value)

@@ -1,9 +1,7 @@
-using System.Collections;
 using System.Collections.Generic;
-using ButtonsAndDoors.ClearUnity;
 using UnityEngine;
 
-namespace ButtonsAndDoors.ClearUnity
+namespace ButtonsAndDoors
 {
     public class LevelOnUnity : MonoBehaviour
     {

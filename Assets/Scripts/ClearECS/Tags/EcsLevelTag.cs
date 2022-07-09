@@ -1,9 +1,7 @@
-﻿using UnityEngine;
-
-namespace ButtonsAndDoors
+﻿namespace ButtonsAndDoors
 {
     public struct EcsLevelTag
     {
-        public Vector3 spawnPosition;
+        public V3 spawnPosition;
     }
 }

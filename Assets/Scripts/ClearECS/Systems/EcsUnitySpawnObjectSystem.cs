@@ -6,8 +6,8 @@ namespace ButtonsAndDoors
 {
     internal sealed class EcsUnitySpawnObjectSystem : IEcsRunSystem
     {
-        private readonly EcsCustomInject<FactoryMonoObject> _factoryMonoObject = default;
-        private EcsFilterInject<Inc<EcsNeedCreateViewTag, EcsPosition>> _viewFilter = default;
+        private EcsCustomInject<FactoryMonoObject> _factoryMonoObject;
+        private EcsFilterInject<Inc<EcsNeedCreateViewTag, EcsPosition>> _viewFilter;
 
         public void Run(EcsSystems systems)
         {
@@ -17,7 +17,7 @@ namespace ButtonsAndDoors
                 ref EcsPosition ecsPosition = ref _viewFilter.Pools.Inc2.Get(entity);
 
                 GameObject go = _factoryMonoObject.Value.GetObjectByID(tag.objectType);
-                go.transform.position = ecsPosition.needPosition;
+                go.transform.position = Utils.ConvertV3ToVector3(ecsPosition.needPosition);
                 LevelViewCreator.SetViewData(tag.objectType, tag.objectData, go, systems, entity);
                 ref EcsMonoBeh monoBeh = ref systems.GetWorld().GetPool<EcsMonoBeh>().Add(entity);
                 monoBeh.transform = go.transform;

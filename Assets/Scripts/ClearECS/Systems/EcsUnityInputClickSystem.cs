@@ -1,10 +1,9 @@
 ﻿using Leopotam.EcsLite;
-using Leopotam.EcsLite.Di;
 using UnityEngine;
 
 namespace ButtonsAndDoors
 {
-    internal sealed class EcsInputClickSystem : IEcsInitSystem, IEcsRunSystem
+    internal sealed class EcsUnityInputClickSystem : IEcsInitSystem, IEcsRunSystem
     {
         private RaycastHit _hit;
         private Ray _ray;
@@ -26,7 +25,7 @@ namespace ButtonsAndDoors
                     foreach (int entity in systems.GetWorld().Filter<EcsInputClick>().End())
                     {
                         ref EcsInputClick inputClick = ref systems.GetWorld().GetPool<EcsInputClick>().Get(entity);
-                        inputClick.vector3 = _hit.point;
+                        inputClick.vector3 = Utils.ConvertVector3ToV3(_hit.point);
                         inputClick.haveClick = true;
                     }
                 }

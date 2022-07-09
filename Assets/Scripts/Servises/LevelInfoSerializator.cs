@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using ButtonsAndDoors.ClearUnity;
 using UnityEngine;
 
 namespace ButtonsAndDoors
@@ -20,7 +19,7 @@ namespace ButtonsAndDoors
 
             sceneData.levelInfo = new LevelInfo();
             sceneData.levelInfo.levelID = levelOnUnity.gameObject.name;
-            sceneData.levelInfo.pointSpawnPlayer = levelOnUnity.pointSpawnPlayer.position;
+            sceneData.levelInfo.pointSpawnPlayer = Utils.ConvertVector3ToV3(levelOnUnity.pointSpawnPlayer.position);
             sceneData.levelInfo.objectType = Constatns.ObjectType.level;
 
             sceneData.levelInfo.listButtonInfo = new List<ButtonInfo>();
@@ -32,10 +31,10 @@ namespace ButtonsAndDoors
                 buttonInfo.colorID = buttonOnUnity.colorID;
 
                 buttonInfo.transformInfo = new TransformInfo();
-                buttonInfo.transformInfo.position = buttonOnUnity.transform.position;
-                buttonInfo.transformInfo.rotate = buttonOnUnity.transform.eulerAngles;
+                buttonInfo.transformInfo.position = Utils.ConvertVector3ToV3(buttonOnUnity.transform.position);
+                buttonInfo.transformInfo.rotate = Utils.ConvertVector3ToV3(buttonOnUnity.transform.eulerAngles);
 
-                buttonInfo.color = buttonOnUnity.meshRenderer.sharedMaterial.color;
+                buttonInfo.clr = Utils.ConvertColorToClr(buttonOnUnity.meshRenderer.sharedMaterial.color);
 
                 sceneData.levelInfo.listButtonInfo.Add(buttonInfo);
             }
@@ -49,10 +48,10 @@ namespace ButtonsAndDoors
                 doorInfo.colorID = doorOnUnity.colorID;
 
                 doorInfo.transformInfo = new TransformInfo();
-                doorInfo.transformInfo.position = doorOnUnity.transform.position;
-                doorInfo.transformInfo.rotate = doorOnUnity.transform.eulerAngles;
+                doorInfo.transformInfo.position = Utils.ConvertVector3ToV3(doorOnUnity.transform.position);
+                doorInfo.transformInfo.rotate = Utils.ConvertVector3ToV3(doorOnUnity.transform.eulerAngles);
 
-                doorInfo.color = doorOnUnity.meshRenderer.sharedMaterial.color;
+                doorInfo.clr = Utils.ConvertColorToClr(doorOnUnity.meshRenderer.sharedMaterial.color);
 
                 sceneData.levelInfo.listDoorInfo.Add(doorInfo);
             }

@@ -26,12 +26,14 @@ namespace ButtonsAndDoors
 #if UNITY_EDITOR
                 .Add(new EcsWorldDebugSystem())
 #endif
-                
+                //Services
+                .Add(new EcsUnityTimeSystem())
+                .Add(new EcsUnityInputClickSystem())
 
                 //ClearECS
                 .Add(new EcsSpawnLevelSystem())
                 .Add(new EcsSpawnPlayerSystem())
-                .Add(new EcsInputClickSystem())
+            
                 .Add(new EcsSetPositionToPlayerSystem())
                 .Add(new EcsActiveByDistanceSystem())
                 .Add(new EcsColorTriggerSystem())
@@ -44,9 +46,6 @@ namespace ButtonsAndDoors
                 .Add(new EcsUnityUpdatePositionSystem())
                 .Add(new EcsUnityAnimatorSystem())
                 
-
-                //Services
-                .Add(new EcsUnityTimeSystem())
                 .Inject(_sceneData)
                 .Inject(_factoryMonoObject)
                 .Init();

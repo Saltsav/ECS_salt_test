@@ -5,8 +5,8 @@ namespace ButtonsAndDoors
 {
     internal sealed class EcsSetPositionToPlayerSystem : IEcsRunSystem
     {
-        private EcsFilterInject<Inc<EcsPosition, EcsPlayerTag>> _playerFilter = default;
-        private EcsFilterInject<Inc<EcsInputClick>> _inputClickFilter = default;
+        private EcsFilterInject<Inc<EcsPosition, EcsPlayerTag>> _playerFilter;
+        private EcsFilterInject<Inc<EcsInputClick>> _inputClickFilter;
 
         public void Run(EcsSystems systems)
         {
