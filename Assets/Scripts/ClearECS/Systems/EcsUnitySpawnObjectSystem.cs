@@ -4,11 +4,11 @@ using UnityEngine;
 
 namespace ButtonsAndDoors
 {
-    internal sealed class EcsSpawnUnityObjectSystem : IEcsRunSystem
+    internal sealed class EcsUnitySpawnObjectSystem : IEcsRunSystem
     {
         private readonly EcsCustomInject<FactoryMonoObject> _factoryMonoObject = default;
         private EcsFilterInject<Inc<EcsNeedCreateViewTag, EcsPosition>> _viewFilter = default;
-        
+
         public void Run(EcsSystems systems)
         {
             foreach (int entity in _viewFilter.Value)
@@ -18,7 +18,7 @@ namespace ButtonsAndDoors
 
                 GameObject go = _factoryMonoObject.Value.GetObjectByID(tag.objectType);
                 go.transform.position = ecsPosition.needPosition;
-                LevelViewCreator.SetViewData(tag.objectType, tag.objectData, go);
+                LevelViewCreator.SetViewData(tag.objectType, tag.objectData, go, systems, entity);
                 ref EcsMonoBeh monoBeh = ref systems.GetWorld().GetPool<EcsMonoBeh>().Add(entity);
                 monoBeh.transform = go.transform;
 

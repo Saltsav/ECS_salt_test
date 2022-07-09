@@ -1,6 +1,6 @@
 ﻿namespace ButtonsAndDoors
 {
-    public struct EcsNeedUpdateViewOnMapTag
+    public struct EcsMoveTag
     {
     }
 }

@@ -8,8 +8,9 @@ namespace ButtonsAndDoors
     {
         private EcsFilterInject<Inc<EcsPosition, EcsMoveSpeed>> _moveFilter = default;
         private EcsFilterInject<Inc<EcsTime>> _timeFilter = default;
-        private readonly EcsFilterInject<Inc<EcsNeedUpdateViewOnMapTag>> _needUpdateViewOnMapFilter = default;
-
+        private readonly EcsFilterInject<Inc<EcsMoveTag>> _needUpdateViewOnMapFilter = default;
+        private readonly EcsFilterInject<Inc<EcsUpdateAnimationTag>> _updateAnimationFilter = default;
+        
         private float deltaTime;
 
         public void Run(EcsSystems systems)
@@ -32,6 +33,11 @@ namespace ButtonsAndDoors
                         _needUpdateViewOnMapFilter.Pools.Inc1.Add(entity);
                     }
 
+                    if (!_updateAnimationFilter.Pools.Inc1.Has(entity))
+                    {
+                        _updateAnimationFilter.Pools.Inc1.Add(entity);
+                    }
+                    
                     ref EcsMoveSpeed moveSpeed = ref _moveFilter.Pools.Inc2.Get(entity);
                     float t = 1 / (dis / moveSpeed.moveSpeed);
                     position.currentPosition = Vector3.Lerp(position.currentPosition, position.needPosition, t * deltaTime);

@@ -1,20 +1,23 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using ButtonsAndDoors.ClearUnity;
+using Leopotam.EcsLite;
 using UnityEngine;
 
 namespace ButtonsAndDoors
 {
     public class LevelViewCreator
     {
-        public static void SetViewData(Constatns.ObjectType type, object data, GameObject go)
+        public static void SetViewData(Constatns.ObjectType type, object data, GameObject go, EcsSystems systems, int entity)
         {
             switch (type)
             {
                 case Constatns.ObjectType.level:
                     break;
                 case Constatns.ObjectType.player:
+                    PlayerOnUnity playerOnUnity = go.GetComponent<PlayerOnUnity>();
+                    ref EcsUnityAnimator unityAnimator = ref systems.GetWorld().GetPool<EcsUnityAnimator>().Add(entity);
+                    unityAnimator.playerAnimation = playerOnUnity.playerAnimation;
+
                     break;
                 case Constatns.ObjectType.door:
                     DoorInfo doorInfo = data as DoorInfo;

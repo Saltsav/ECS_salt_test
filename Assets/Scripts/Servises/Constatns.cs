@@ -2,6 +2,7 @@
 {
     public class Constatns
     {
+        public const float FLOAT_ZERO = 0.0001f;
         public const float OPEN_DOOR_SPEED = 2;
 
         public const float OPEN_DOOR_DELTA = 2;
@@ -24,7 +25,5 @@
             door,
             button
         }
-
-
     }
 }

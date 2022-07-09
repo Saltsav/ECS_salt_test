@@ -3,10 +3,10 @@ using Leopotam.EcsLite.Di;
 
 namespace ButtonsAndDoors
 {
-    internal sealed class EcsUpdateViewOnMapSystem : IEcsRunSystem
+    internal sealed class EcsUnityUpdatePositionSystem : IEcsRunSystem
     {
-        private EcsFilterInject<Inc<EcsNeedUpdateViewOnMapTag, EcsMonoBeh, EcsPosition>> _updateFilter = default;
-        private readonly EcsFilterInject<Inc<EcsNeedUpdateViewOnMapTag>> _needUpdateViewOnMapFilter = default;
+        private EcsFilterInject<Inc<EcsMoveTag, EcsMonoBeh, EcsPosition>> _updateFilter = default;
+        private readonly EcsFilterInject<Inc<EcsMoveTag>> _needUpdateViewOnMapFilter = default;
 
         public void Run(EcsSystems systems)
         {
