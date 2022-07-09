@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8225451870487450381}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.21, y: 0, z: -6.01}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 0.2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -45,6 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a12fbe1a470730947a36bd40360625d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  colorID: 0
+  meshRenderer: {fileID: 8225451870487450387}
 --- !u!33 &8225451870487450386
 MeshFilter:
   m_ObjectHideFlags: 0

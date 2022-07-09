@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad767bb099e5d0042b7e291c6a5e6251, type: 3}
+  m_Name: PrefabData
+  m_EditorClassIdentifier: 
+  levelPrefab: {fileID: 2281614909288595148, guid: 75d544fa52daf664cbe98c11337e9165, type: 3}
+  doorPrefab: {fileID: 391466431736424177, guid: 883be280ae4a3f44caae3857d8a2139e, type: 3}
+  buttonPrefab: {fileID: 8225451870487450381, guid: 7d0fda18205288e4d8e9a089c88113bc, type: 3}
+  playerPrefab: {fileID: 2989354336775840354, guid: b9c465aae81d38f49b3831c31e285d78, type: 3}

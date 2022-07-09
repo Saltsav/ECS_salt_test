@@ -16,5 +16,15 @@
             green,
             blue
         }
+
+        public enum ObjectType
+        {
+            level,
+            player,
+            door,
+            button
+        }
+
+
     }
 }

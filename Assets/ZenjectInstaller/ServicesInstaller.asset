@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: ServicesInstaller
   m_EditorClassIdentifier: 
   sceneData: {fileID: 11400000, guid: dc1c664e04568534d83eb09eb6081dc4, type: 2}
+  prefabData: {fileID: 11400000, guid: ccf13cb13f814e24b82f9d14dd24983c, type: 2}

@@ -14,18 +14,16 @@ namespace ButtonsAndDoors
             ref EcsPlayerTag ecsPlayerTag = ref systems.GetWorld().GetPool<EcsPlayerTag>().Add(entity);
 
             ref EcsPosition ecsPosition = ref systems.GetWorld().GetPool<EcsPosition>().Add(entity);
-            ecsPosition.currentPosition = _sceneData.Value.GetLevelOnUnity().pointSpawnPlayer.position;
-            ecsPosition.needPosition = _sceneData.Value.GetLevelOnUnity().pointSpawnPlayer.position;
+            ecsPosition.currentPosition = _sceneData.Value.levelInfo.pointSpawnPlayer;
+            ecsPosition.needPosition = _sceneData.Value.levelInfo.pointSpawnPlayer;
 
             ref EcsMoveSpeed moveSpeed = ref systems.GetWorld().GetPool<EcsMoveSpeed>().Add(entity);
             moveSpeed.moveSpeed = Constatns.PLAYER_SPEED;
 
-            ref EcsMonoBeh monoBeh = ref systems.GetWorld().GetPool<EcsMonoBeh>().Add(entity);
-            monoBeh.transform = _sceneData.Value.GetPlayerOnUnity().transform;
-            monoBeh.transform.position = _sceneData.Value.GetLevelOnUnity().pointSpawnPlayer.position;
+            systems.GetWorld().GetPool<EcsDistanceTriggerSender>().Add(entity);
 
-            ref EcsDistanceTriggerSender triggerSender = ref systems.GetWorld().GetPool<EcsDistanceTriggerSender>().Add(entity);
-            
+            ref EcsNeedCreateViewTag needCreateViewTag = ref systems.GetWorld().GetPool<EcsNeedCreateViewTag>().Add(entity);
+            needCreateViewTag.objectType = Constatns.ObjectType.player;
         }
     }
 }

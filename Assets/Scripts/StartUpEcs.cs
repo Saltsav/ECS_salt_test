@@ -2,7 +2,6 @@ using System;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
 using Leopotam.EcsLite.UnityEditor;
-using UnityEngine;
 using Zenject;
 
 namespace ButtonsAndDoors
@@ -11,12 +10,13 @@ namespace ButtonsAndDoors
     {
         private EcsSystems _systems;
         private SceneData _sceneData;
-
+        private FactoryMonoObject _factoryMonoObject;
 
         [Inject]
-        private void Construct(SceneData sceneData)
+        private void Construct(SceneData sceneData, FactoryMonoObject factoryMonoObject)
         {
             _sceneData = sceneData;
+            _factoryMonoObject = factoryMonoObject;
         }
 
         public void Initialize()
@@ -34,13 +34,14 @@ namespace ButtonsAndDoors
                 .Add(new EcsActiveByDistanceSystem())
                 .Add(new EcsColorTriggerSystem())
                 .Add(new EcsEnableTriggersSystem())
-
                 .Add(new EcsMoveSystem())
-            
+
                 //Unity Dependence
+                .Add(new EcsSpawnUnityObjectSystem())
                 .Add(new EcsTimeSystem())
                 .Add(new EcsUpdateViewOnMapSystem())
                 .Inject(_sceneData)
+                .Inject(_factoryMonoObject)
                 .Init();
         }
 
@@ -58,8 +59,6 @@ namespace ButtonsAndDoors
             if (_systems != null)
             {
                 _systems.Destroy();
-                // add here cleanup for custom worlds, for example:
-                // _systems.GetWorld ("events").Destroy ();
                 _systems.GetWorld().Destroy();
                 _systems = null;
             }
